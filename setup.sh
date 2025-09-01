@@ -2,6 +2,8 @@
 
 echo "Setting up virtual environment..."
 
+# TODO: Make sure R.exe is setup correctly
+
 # Create virtual env if it doesn't exist
 if [ ! -d ".venv" ]; then
     python -m venv .venv # TODO: Handle systems with python & python3

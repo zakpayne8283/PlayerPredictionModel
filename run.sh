@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Do the R stuff
+Rscript src/data/setup_data.R
+
 # Optional: Activate virtualenv
 if [ -d ".venv" ]; then
     source .venv/Scripts/activate
