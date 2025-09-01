@@ -6,8 +6,19 @@ def run(data):
     print("Starting linear regression model...")
     
     # Extract columns for in/out
-    x = data[["age_season", "prev_year_games"]]
-    y = data[["total_games"]]
+    x = data[[
+        "age_season",
+        "G_c_prev",
+        "G_1b_prev",
+        "G_2b_prev",
+        "G_3b_prev",
+        "G_ss_prev",
+        "G_lf_prev",
+        "G_cf_prev",
+        "G_rf_prev",
+        "G_dh_prev"
+        ]]
+    y = data[["G_all"]]
 
     # Independent variables (add constant for intercept)
     x = sm.add_constant(x)  # adds intercept column

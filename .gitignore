@@ -1,1 +1,3 @@
 .venv/
+data/batter_data.csv
+*/__pycache__/*
