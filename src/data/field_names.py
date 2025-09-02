@@ -11,7 +11,8 @@ g_lf_prev  = "G_lf_prev"
 g_cf_prev  = "G_cf_prev"
 g_rf_prev  = "G_rf_prev"
 g_dh_prev  = "G_dh_prev"
-plate_appearances = "PA"
+pa_prev    = "PA_prev"
+pa_prev_per_g_all_prev = "PA_prev_per_G_prev"
 
 def get_all():
     return [
@@ -27,5 +28,7 @@ def get_all():
         g_lf_prev,
         g_cf_prev,
         g_rf_prev,
-        g_dh_prev
+        g_dh_prev,
+        pa_prev,
+        pa_prev_per_g_all_prev
     ]

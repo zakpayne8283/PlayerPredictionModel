@@ -2,8 +2,6 @@
 library(dplyr)
 library(Lahman)
 
-names(Batting)
-
 # ---- Field definitions ----
 
 # - Game Rules Definitions -
@@ -100,6 +98,7 @@ output_data <- output_data_raw |>
   mutate(
     across(matches("^G_|^PA$"), ~ lag(.x), .names = "{.col}_prev")
   ) |>
+  mutate(PA_prev_per_G_prev = PA_prev / G_all_prev) |>
   select(-all_of(position_fields), -PA, -G_p_prev)
 
 # ---- Save ----

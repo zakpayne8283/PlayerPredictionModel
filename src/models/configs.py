@@ -52,3 +52,16 @@ class GamesPlayedAllPositionData(BaseConfig):
     y_fields = [
         fields.g_all
     ]
+
+class GamesPlayedVsPARate(BaseConfig):
+    name = "Age, Games Played, PA / G Last Year (X) vs Games Played (Y)"
+    png_name = "age_g_pa_game_played"
+
+    x_fields = [
+        fields.age_season,
+        fields.g_all_prev,
+        fields.pa_prev_per_g_all_prev
+    ]
+    y_fields = [
+        fields.g_all
+    ]

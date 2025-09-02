@@ -9,7 +9,8 @@ def run(data):
 
     models_to_run = [
         configs.GamesPlayedBasic,
-        configs.GamesPlayedAllPositionData
+        configs.GamesPlayedAllPositionData,
+        configs.GamesPlayedVsPARate
     ]
     
     for model in models_to_run:
