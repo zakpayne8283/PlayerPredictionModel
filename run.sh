@@ -22,7 +22,7 @@ done
 # Run setup_data.R unless --use-cache was passed
 if [ "$USE_CACHE" = false ]; then
   echo "Running setup_data.R..."
-  Rscript src/data/setup_data.R
+  Rscript src/data/R/setup_data.R
 else
   echo "Skipping setup_data.R (using cache)."
 fi

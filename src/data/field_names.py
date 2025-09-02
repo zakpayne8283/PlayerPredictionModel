@@ -11,6 +11,7 @@ g_lf_prev  = "G_lf_prev"
 g_cf_prev  = "G_cf_prev"
 g_rf_prev  = "G_rf_prev"
 g_dh_prev  = "G_dh_prev"
+plate_appearances = "PA"
 
 def get_all():
     return [

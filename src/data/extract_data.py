@@ -3,7 +3,7 @@ import pandas as pd
 import data.field_names as fields
 
 def load_data():
-    data = pd.read_csv('data/batter_data.csv')
+    data = pd.read_csv('data/batter_games_data.csv')
 
     # Pull our columns
     data = data[fields.get_all()]
