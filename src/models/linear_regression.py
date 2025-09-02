@@ -1,43 +1,44 @@
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
 
+import models.configs as configs
+
 def run(data):
 
-    print("Starting linear regression model...")
+    print("Starting linear regression models...")
+
+    models_to_run = [
+        configs.GamesPlayedBasic,
+        configs.GamesPlayedAllPositionData
+    ]
     
-    # Extract columns for in/out
-    x = data[[
-        "age_season",
-        "G_c_prev",
-        "G_1b_prev",
-        "G_2b_prev",
-        "G_3b_prev",
-        "G_ss_prev",
-        "G_lf_prev",
-        "G_cf_prev",
-        "G_rf_prev",
-        "G_dh_prev"
-        ]]
-    y = data[["G_all"]]
+    for model in models_to_run:
+        print(f"Running model: {model.name}")
 
-    # Independent variables (add constant for intercept)
-    x = sm.add_constant(x)  # adds intercept column
+        x = data[model.x_fields]
+        y = data[model.y_fields]
 
-    # Fit the model
-    model = sm.OLS(y, x).fit()
+        # Independent variables (add constant for intercept)
+        x = sm.add_constant(x)  # adds intercept column
 
-    # View summary
-    print(model.summary())
+        # Fit the model
+        fit_model = sm.OLS(y, x).fit()
 
-    # Predicted values
-    y_pred = model.predict(x)
+        # View summary
+        print(fit_model.summary())
 
-    # Create a scatterplot of predicted games played vs. actual games played
-    plt.scatter(y, y_pred)
-    plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')  # 45° line
-    plt.xlabel("Actual Games Played")
-    plt.ylabel("Predicted Games Played")
-    plt.title("Actual vs Predicted")
-    plt.show()
-    
+        # Predicted values
+        y_pred = fit_model.predict(x)
+
+        # Clear matplotlib
+        plt.figure()
+
+        # Create a scatterplot of predicted games played vs. actual games played
+        plt.scatter(y, y_pred)
+        plt.plot([y.min(), y.max()], [y.min(), y.max()], 'r--')  # 45° line
+        plt.xlabel("Actual Games Played")
+        plt.ylabel("Predicted Games Played")
+        plt.title(model.name)
+        plt.savefig(f"outputs/{model.png_name}.png")
+        
     
